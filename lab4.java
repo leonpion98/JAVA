@@ -1,0 +1,236 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class lab4{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== ЛАБОРАТОРНАЯ РАБОТА №4 =====");
+            System.out.println("1.  Числа от 1 до N, кратные 3");
+            System.out.println("2.  Сумма чётных чисел от 1 до 100");
+            System.out.println("3.  Таблица умножения");
+            System.out.println("4.  Факториал (while)");
+            System.out.println("5.  Числа Фибоначчи");
+            System.out.println("6.  Среднее арифметическое (ввод до 0)");
+            System.out.println("7.  Простые числа от 2 до N");
+            System.out.println("8.  Сумма цифр числа");
+            System.out.println("9.  Прямоугольник из звёздочек");
+            System.out.println("10. Угадай число");
+            System.out.println("0.  Выход");
+            System.out.print("Выберите пример (0-10): ");
+
+            choice = scanner.nextInt();
+            System.out.println();
+
+            switch (choice) {
+                case 1:
+                    example1();
+                    break;
+                case 2:
+                    example2();
+                    break;
+                case 3:
+                    example3();
+                    break;
+                case 4:
+                    example4();
+                    break;
+                case 5:
+                    example5();
+                    break;
+                case 6:
+                    example6();
+                    break;
+                case 7:
+                    example7();
+                    break;
+                case 8:
+                    example8();
+                    break;
+                case 9:
+                    example9();
+                    break;
+                case 10:
+                    example10();
+                    break;
+                case 0:
+                    System.out.println("Программа завершена.");
+                    break;
+                default:
+                    System.out.println("Неверный ввод. Попробуйте снова.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
+    }
+
+    // Пример 1: Числа от 1 до N, кратные 3
+    public static void example1() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите N: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Числа от 1 до " + n + ", кратные 3: ");
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Пример 2: Сумма чётных чисел от 1 до 100
+    public static void example2() {
+        int sum = 0;
+        for (int i = 2; i <= 100; i += 2) {
+            sum += i;
+        }
+        System.out.println("Сумма чётных чисел от 1 до 100: " + sum);
+    }
+
+    // Пример 3: Таблица умножения
+    public static void example3() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Таблица умножения для " + n + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(n + " * " + i + " = " + (n * i));
+        }
+    }
+
+    // Пример 4: Факториал с while
+    public static void example4() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите N: ");
+        int n = scanner.nextInt();
+
+        int i = 1;
+        long fact = 1;
+        while (i <= n) {
+            fact *= i;
+            i++;
+        }
+        System.out.println("Факториал числа " + n + " = " + fact);
+    }
+
+    // Пример 5: Числа Фибоначчи
+    public static void example5() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Сколько чисел Фибоначчи вывести? ");
+        int n = scanner.nextInt();
+
+        int a = 0, b = 1;
+        System.out.print("Числа Фибоначчи: ");
+        for (int i = 1; i <= n; i++) {
+            System.out.print(a + " ");
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println();
+    }
+
+    // Пример 6: Среднее арифметическое (ввод до 0)
+    public static void example6() {
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0, count = 0, num;
+
+        System.out.println("Введите числа (для завершения введите 0):");
+        do {
+            num = scanner.nextInt();
+            if (num != 0) {
+                sum += num;
+                count++;
+            }
+        } while (num != 0);
+
+        if (count > 0) {
+            System.out.println("Среднее арифметическое: " + (double) sum / count);
+        } else {
+            System.out.println("Числа не были введены.");
+        }
+    }
+
+    // Пример 7: Простые числа от 2 до N
+    public static void example7() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите N: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Простые числа от 2 до " + n + ": ");
+        for (int i = 2; i <= n; i++) {
+            boolean isPrime = true;
+            for (int j = 2; j * j <= i; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    // Пример 8: Сумма цифр числа
+    public static void example8() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число: ");
+        int num = scanner.nextInt();
+        int original = num;
+        int sum = 0;
+
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        System.out.println("Сумма цифр числа " + original + " = " + sum);
+    }
+
+    // Пример 9: Прямоугольник из звёздочек
+    public static void example9() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите высоту: ");
+        int height = scanner.nextInt();
+        System.out.print("Введите ширину: ");
+        int width = scanner.nextInt();
+
+        System.out.println("Прямоугольник " + height + "x" + width + ":");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    // Пример 10: Угадай число
+    public static void example10() {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int secret = random.nextInt(100) + 1;
+        int guess;
+        int attempts = 0;
+
+        System.out.println("Я загадал число от 1 до 100. Попробуйте угадать!");
+
+        do {
+            System.out.print("Ваше число: ");
+            guess = scanner.nextInt();
+            attempts++;
+
+            if (guess < secret) {
+                System.out.println("Больше!");
+            } else if (guess > secret) {
+                System.out.println("Меньше!");
+            } else {
+                System.out.println("Поздравляю! Вы угадали число " + secret + " за " + attempts + " попыток!");
+            }
+        } while (guess != secret);
+    }
+}
