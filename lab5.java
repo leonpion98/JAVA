@@ -7,8 +7,14 @@ public class lab5 {
         // Задание 1: Вывод чисел от 1 до N
         System.out.print("Задание 1. Введите N: ");
         int n1 = sc.nextInt();
-        for (int i = 1; i <= n1; i++) {
-            System.out.print(i + " ");
+        if (n1 >= 1) {
+            for (int i = 1; i <= n1; i++) {
+                System.out.print(i + " ");
+            }
+        } else {
+            for (int i = 0; i >= n1; i--) {
+                System.out.print(i + " ");
+            }
         }
         System.out.println("\n");
 
@@ -35,13 +41,17 @@ public class lab5 {
         // Задание 4: Четные от 1 до 100 (while + continue)
         System.out.println("Задание 4. Четные числа:");
         int i4 = 1;
-        while (i4 <= 100) {
-            if (i4 % 2 == 0) {
-                System.out.print(i4 + " ");
+        int count = 0;
+        while (i4 <= 43) {
+            if (i4 % 2 != 0) {
+                i4++;
+                continue;
             }
+            System.out.print(i4 + " ");
+            count++;
             i4++;
         }
-        System.out.println("\n");
+        System.out.println("\n" + count);
 
         // Задание 5: Ввод до 0 (do-while)
         System.out.println("Задание 5. Вводите числа (0 - стоп):");
